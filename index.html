@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="David Telles — Desenvolvedor Web & Entusiasta de Cybersecurity" />
+    <title>David Telles | Dev & Security</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>DT<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#github-stats">GitHub</a></li>
+                <li><a href="#journey">Jornada</a></li>
+                <li><a href="#goals">Objetivos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+    <section class="hero" id="home">
+        <canvas id="particleCanvas"></canvas>
+        <div class="scanlines"></div>
+
+        <div class="hero-inner">
+            <div class="hero-content" data-reveal>
+                <div class="terminal-window">
+                    <div class="terminal-bar">
+                        <span class="t-dot t-red"></span>
+                        <span class="t-dot t-yellow"></span>
+                        <span class="t-dot t-green"></span>
+                        <span class="t-title">~/portfolio</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">whoami</span></p>
+                        <p class="t-output hero-name">David Telles</p>
+                        <p class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">cat role.txt</span></p>
+                        <p class="t-output"><span id="typewriter"></span><span class="cursor">█</span></p>
+                        <p class="t-line fade-in-late"><span class="t-prompt">$</span> <span class="t-cmd">ls
+                                skills/</span></p>
+                        <p class="t-output fade-in-late t-tags">
+                            <span class="tag">web-dev</span>
+                            <span class="tag">cybersecurity</span>
+                            <span class="tag">backend</span>
+                            <span class="tag">linux</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fa-solid fa-code"></i> Ver Projetos
+                    </a>
+                    <a href="https://github.com/DavidTelles" target="_blank" rel="noopener" class="btn btn-outline">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">
+                        <i class="fa-solid fa-envelope"></i> Contato
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-avatar" data-reveal>
+                <div class="avatar-ring">
+                    <div class="avatar-placeholder">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                </div>
+                <div class="avatar-badge">
+                    <i class="fa-solid fa-shield-halved"></i> Security Minded
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ ABOUT ══════════════════════════════ -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>Sobre Mim</div>
+            <h2 class="section-title" data-reveal>Quem sou eu</h2>
+
+            <div class="about-grid">
+                <div class="about-text" data-reveal>
+                    <p>Sou David Telles, desenvolvedor em formação com profundo interesse em <strong>Segurança da
+                            Informação</strong> e <strong>Desenvolvimento de Software</strong>. Minha jornada na
+                        tecnologia começou pela curiosidade genuína sobre como sistemas funcionam — e, mais importante,
+                        como podem falhar.</p>
+
+                    <p>Ao longo do meu aprendizado, construí uma base sólida em desenvolvimento web com <strong>HTML,
+                            CSS e JavaScript</strong>, enquanto explorava o universo do backend com
+                        <strong>Node.js</strong> e bancos de dados relacionais. Paralelamente, aprofundo meu
+                        conhecimento em <strong>Linux, redes e fundamentos de Pentest</strong>.
+                    </p>
+
+                    <p>Acredito que entender como sistemas são construídos é essencial para protegê-los. Por isso, busco
+                        unir a mentalidade de desenvolvedor à visão de segurança — criando software robusto, seguro e
+                        bem arquitetado.</p>
+
+                    <p>Meu objetivo é seguir carreira na intersecção entre desenvolvimento e cibersegurança,
+                        contribuindo para projetos que fazem diferença no mundo digital.</p>
+                </div>
+
+                <div class="about-cards" data-reveal>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-code"></i></div>
+                        <h4>Desenvolvimento</h4>
+                        <p>Web, backend e APIs RESTful com foco em código limpo e manutenível.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4>Segurança</h4>
+                        <p>Linux, redes, OWASP e princípios de Pentest para construir sistemas mais seguros.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h4>Aprendizado</h4>
+                        <p>Estudante dedicado, buscando constantemente novos conhecimentos e desafios.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+                        <h4>Visão Global</h4>
+                        <p>Interesse em projetos open source e atuação no mercado internacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ SKILLS ══════════════════════════════ -->
+    <section class="section skills-section" id="skills">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>Competências</div>
+            <h2 class="section-title" data-reveal>Habilidades Técnicas</h2>
+
+            <div class="skills-grid">
+                <!-- Web Dev -->
+                <div class="skill-group" data-reveal>
+                    <div class="skill-group-header">
+                        <i class="fa-solid fa-window-maximize"></i>
+                        <h3>Desenvolvimento Web</h3>
+                    </div>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-info"><span>HTML5</span><span class="skill-pct">85%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-pct="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-info"><span>CSS3</span><span class="skill-pct">80%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-pct="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-info"><span>JavaScript</span><span class="skill-pct">75%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-pct="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-group" data-reveal>
+                    <div class="skill-group-header">
+                        <i class="fa-solid fa-server"></i>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-info"><span>Node.js</span><span class="skill-pct">65%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-pct="65"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-info"><span>APIs REST</span><span class="skill-pct">60%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-pct="60"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-group" data-reveal>
+                    <div class="skill-group-header">
+                        <i class="fa-solid fa-database"></i>
+                        <h3>Banco de Dados</h3>
+                    </div>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-info"><span>SQL</span><span class="skill-pct">76%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-pct="76"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="skill-group skill-group--security" data-reveal>
+                    <div class="skill-group-header">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3>Segurança da Informação</h3>
+                    </div>
+                    <div class="security-tags">
+                        <span class="sec-tag"><i class="fa-brands fa-linux"></i> Linux</span>
+                        <span class="sec-tag"><i class="fa-solid fa-network-wired"></i> Redes</span>
+                        <span class="sec-tag"><i class="fa-solid fa-user-secret"></i> Pentest</span>
+                        <span class="sec-tag"><i class="fa-solid fa-shield-virus"></i> OWASP</span>
+                        <span class="sec-tag"><i class="fa-solid fa-terminal"></i> CLI</span>
+                        <span class="sec-tag"><i class="fa-solid fa-bug"></i> Vulnerabilidades</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ PROJECTS ══════════════════════════════ -->
+    <section class="section projects-section" id="projects">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>Portfólio</div>
+            <h2 class="section-title" data-reveal>Projetos</h2>
+
+            <div class="filter-bar" data-reveal>
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="security">Segurança</button>
+                <button class="filter-btn" data-filter="study">Estudos</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Cards injected by JS -->
+                <div class="projects-loading">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Carregando projetos do GitHub...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ GITHUB STATS ══════════════════════════════ -->
+    <section class="section github-section" id="github-stats">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>GitHub</div>
+            <h2 class="section-title" data-reveal>Estatísticas</h2>
+
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card" data-reveal>
+                    <div class="stat-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="stat-number counter" data-target="0" id="repoCount">—</div>
+                    <div class="stat-label">Repositórios</div>
+                </div>
+                <div class="stat-card" data-reveal>
+                    <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="stat-number counter" data-target="0" id="starCount">—</div>
+                    <div class="stat-label">Estrelas</div>
+                </div>
+                <div class="stat-card" data-reveal>
+                    <div class="stat-icon"><i class="fa-solid fa-code-fork"></i></div>
+                    <div class="stat-number counter" data-target="0" id="forkCount">—</div>
+                    <div class="stat-label">Forks</div>
+                </div>
+                <div class="stat-card" data-reveal>
+                    <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-number counter" data-target="0" id="followerCount">—</div>
+                    <div class="stat-label">Seguidores</div>
+                </div>
+            </div>
+
+            <div class="lang-section" data-reveal>
+                <h3>Linguagens Mais Usadas</h3>
+                <div class="lang-bars" id="langBars">
+                    <div class="lang-loading"><i class="fa-solid fa-spinner fa-spin"></i> Carregando...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ JOURNEY ══════════════════════════════ -->
+    <section class="section journey-section" id="journey">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>Timeline</div>
+            <h2 class="section-title" data-reveal>Jornada de Aprendizado</h2>
+
+            <div class="timeline">
+                <div class="timeline-item" data-reveal>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - 2024</span>
+                        <h4>Primeiros Passos</h4>
+                        <p>Início da jornada na programação. Primeiros contatos com lógica de programação, algoritmos e
+                            estruturas de dados básicas.</p>
+                        <div class="timeline-tags">
+                            <span>Lógica</span><span>Algoritmos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-reveal>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 - 2025</span>
+                        <h4>Desenvolvimento Web</h4>
+                        <p>Imersão em HTML, CSS e JavaScript. Criação dos primeiros projetos web, aprendizado de
+                            responsividade e boas práticas de UX.</p>
+                        <div class="timeline-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-reveal>
+                    <div class="timeline-dot timeline-dot--glow"></div>
+                    <div class="timeline-content timeline-content--active">
+                        <span class="timeline-date">2026 — Presente</span>
+                        <h4>Segurança da Informação, Backend & Banco de Dados </h4>
+                        <p>Expansão para o lado servidor com Node.js, construção de APIs RESTful e domínio de SQL.
+                            Exploração profunda de Linux, redes de computadores, fundamentos de Pentest e metodologias
+                            OWASP. Construindo a visão de segurança ofensiva e defensiva.</p>
+                        <div class="timeline-tags">
+                            <span>Node.js</span><span>REST</span><span>Linux</span><span>Redes</span><span>Pentest</span><span>OWASP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ GOALS ══════════════════════════════ -->
+    <section class="section goals-section" id="goals">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>Futuro</div>
+            <h2 class="section-title" data-reveal>Objetivos Profissionais</h2>
+
+            <div class="goals-grid">
+                <div class="goal-card" data-reveal>
+                    <div class="goal-number">01</div>
+                    <div class="goal-icon"><i class="fa-solid fa-user-secret"></i></div>
+                    <h4>Tornar-me Pentester</h4>
+                    <p>Desenvolver expertise em testes de penetração, identificando e explorando vulnerabilidades para
+                        fortalecer sistemas.</p>
+                </div>
+                <div class="goal-card" data-reveal>
+                    <div class="goal-number">02</div>
+                    <div class="goal-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Carreira em Cybersecurity</h4>
+                    <p>Atuar profissionalmente na área de segurança cibernética, protegendo organizações contra ameaças
+                        digitais.</p>
+                </div>
+                <div class="goal-card" data-reveal>
+                    <div class="goal-number">03</div>
+                    <div class="goal-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h4>Ciência da Computação</h4>
+                    <p>Aprofundar a base teórica com formação em Ciência da Computação, solidificando fundamentos
+                        essenciais.</p>
+                </div>
+                <div class="goal-card" data-reveal>
+                    <div class="goal-number">04</div>
+                    <div class="goal-icon"><i class="fa-brands fa-github"></i></div>
+                    <h4>Open Source</h4>
+                    <p>Contribuir ativamente para projetos open source, colaborando com a comunidade global de
+                        desenvolvedores.</p>
+                </div>
+                <div class="goal-card" data-reveal>
+                    <div class="goal-number">05</div>
+                    <div class="goal-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h4>Atuação Internacional</h4>
+                    <p>Trabalhar em projetos e equipes internacionais, contribuindo para soluções de impacto global.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ CONTACT ══════════════════════════════ -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-eyebrow" data-reveal>Fale Comigo</div>
+            <h2 class="section-title" data-reveal>Contato</h2>
+
+            <div class="contact-grid">
+                <div class="contact-info" data-reveal>
+                    <p>Estou disponível para oportunidades, colaborações em projetos open source, ou simplesmente uma
+                        boa conversa sobre tecnologia e segurança.</p>
+
+                    <div class="contact-links">
+                        <a href="https://github.com/DavidTelles" target="_blank" rel="noopener" class="contact-link">
+                            <i class="fa-brands fa-github"></i>
+                            <span>github.com/DavidTelles</span>
+                        </a>
+                        <a href="mailto:contato@davidtelles.dev" class="contact-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>contato@davidtelles.dev</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrap" data-reveal>
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome completo"
+                                autocomplete="name" />
+                            <span class="field-error" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com"
+                                autocomplete="email" />
+                            <span class="field-error" id="emailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Sua mensagem..."></textarea>
+                            <span class="field-error" id="messageError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                        <div class="form-feedback" id="formFeedback"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>DT<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">Desenvolvido por <strong>David Telles</strong> · 2026</p>
+                <div class="footer-links">
+                    <a href="https://github.com/DavidTelles" target="_blank" rel="noopener"><i
+                            class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+
+</html>
