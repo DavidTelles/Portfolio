@@ -1,0 +1,59 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* ─────────────────────────────────────────────────────────
+       VISITS — log detalhado de cada visita
+       - Qualquer visitante pode CRIAR um registro (rastreamento).
+       - Ninguém além de um admin autenticado pode LER, ALTERAR
+         ou APAGAR. Isso impede que terceiros vejam os dados
+         de navegação de outros visitantes.
+       ───────────────────────────────────────────────────────── */
+    match /visits/{visitId} {
+      allow create: if request.resource.data.keys().hasAll(['createdAt', 'page'])
+                     && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       STATS/visitors — contador agregado (documento único)
+       - Leitura pública: alimenta o card "Visitantes" no site.
+       - Escrita pública limitada: só permite incrementar o
+         total em exatamente +1 por vez (o que uma transação de
+         rastreamento de visita faz), bloqueando qualquer
+         tentativa de zerar, decrementar ou pular valores.
+       - Admin autenticado pode fazer qualquer alteração.
+       ───────────────────────────────────────────────────────── */
+    match /stats/visitors {
+      allow read: if true;
+
+      allow create: if request.auth == null
+                    && request.resource.data.total == 1;
+
+      allow update: if request.auth != null
+                    || (
+                      request.resource.data.total == resource.data.total + 1
+                      && request.resource.data.diff(resource.data).affectedKeys()
+                           .hasOnly(['total', 'lastVisitAt', 'dailyDate', 'dailyCount'])
+                    );
+
+      allow delete: if request.auth != null;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       CONTACTS — mensagens do formulário de contato
+       - Qualquer visitante pode enviar (create).
+       - Só admin autenticado pode ler as mensagens recebidas.
+       ───────────────────────────────────────────────────────── */
+    match /contacts/{contactId} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message']);
+      allow read, update, delete: if request.auth != null;
+    }
+
+    /* Bloqueia qualquer outra coleção por padrão */
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

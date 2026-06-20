@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin · Visitantes | David Telles</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+
+<body class="admin-body">
+
+    <header class="admin-topbar">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-bracket">&lt;</span>DT<span class="logo-bracket">/&gt;</span>
+        </a>
+        <span class="admin-topbar-title">~/admin/visitors</span>
+        <button id="logoutBtn" style="display:none;"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+    </header>
+
+    <!-- ══════════════ LOGIN GATE ══════════════ -->
+    <div class="admin-login-wrap" id="loginWrap">
+        <div class="terminal-window">
+            <div class="terminal-bar">
+                <span class="t-dot t-red"></span>
+                <span class="t-dot t-yellow"></span>
+                <span class="t-dot t-green"></span>
+                <span class="t-title">~/admin/login</span>
+            </div>
+            <div class="terminal-body">
+                <p class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">auth --login</span></p>
+                <form class="admin-login-form" id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="e-mail" autocomplete="username" required />
+                    <input type="password" id="loginPassword" placeholder="senha" autocomplete="current-password" required />
+                    <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+                        <i class="fa-solid fa-lock"></i> Entrar
+                    </button>
+                    <span class="admin-login-error" id="loginError"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ DASHBOARD ══════════════ -->
+    <main class="admin-main" id="adminMain">
+        <div class="section-eyebrow">Painel Privado</div>
+        <h2 class="section-title" style="margin-bottom: 2rem;">Visitantes do Portfólio</h2>
+
+        <div class="admin-summary">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-eye"></i></div>
+                <div class="stat-number" id="totalVisits">—</div>
+                <div class="stat-label">Total de Visitas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-calendar-day"></i></div>
+                <div class="stat-number" id="todayVisits">—</div>
+                <div class="stat-label">Hoje</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="stat-number" id="last7Visits">—</div>
+                <div class="stat-label">Últimos 7 dias</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="stat-number" id="lastVisitTime">—</div>
+                <div class="stat-label">Última Visita</div>
+            </div>
+        </div>
+
+        <div class="admin-panel">
+            <h3><i class="fa-solid fa-chart-column"></i> Visitas — Últimos 14 dias</h3>
+            <div class="chart-wrap">
+                <svg class="chart-svg" id="chartSvg" viewBox="0 0 700 220" preserveAspectRatio="xMinYMin meet"></svg>
+            </div>
+        </div>
+
+        <div class="admin-panel">
+            <h3><i class="fa-solid fa-list"></i> Últimas Visitas</h3>
+            <div class="admin-table-wrap">
+                <table class="admin-table" id="visitsTable">
+                    <thead>
+                        <tr>
+                            <th>Data / Hora</th>
+                            <th>Dispositivo</th>
+                            <th>Navegador</th>
+                            <th>Idioma</th>
+                            <th>Fuso Horário</th>
+                            <th>Origem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitsTableBody">
+                        <tr><td colspan="6" class="admin-loading">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase -->
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

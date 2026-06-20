@@ -15,13 +15,20 @@ Portfólio profissional desenvolvido com HTML, CSS e JavaScript puro.
 ```
 /portfolio
 ├── index.html
+├── admin.html
 ├── firebase.json
+├── firestore.rules
 ├── .firebaserc
 ├── README.md
 ├── /css
-│   └── style.css
+│   ├── style.css
+│   └── admin.css
 ├── /js
-│   └── script.js
+│   ├── firebase-init.js
+│   ├── visitors.js
+│   ├── admin.js
+│   ├── script.js
+│   └── contact.js
 └── /assets
     ├── images/
     ├── icons/
@@ -35,6 +42,8 @@ Portfólio profissional desenvolvido com HTML, CSS e JavaScript puro.
 - Habilidades com barras de progresso animadas
 - Projetos carregados via GitHub API (com fallback)
 - Estatísticas do GitHub (repos, stars, forks, seguidores)
+- Contador de visitantes em tempo real via Firebase Firestore
+- Painel administrativo privado com gráfico e log de visitas (`admin.html`)
 - Linguagens mais usadas calculadas dinamicamente
 - Timeline da jornada de aprendizado
 - Objetivos profissionais
@@ -68,35 +77,63 @@ firebase init hosting
 firebase deploy
 ```
 
-### Firebase Firestore (Opcional — formulário de contato)
+### Firebase Firestore — já configurado
 
-Para salvar mensagens do formulário no Firestore, adicione o SDK do Firebase
-no `index.html` antes do `</body>` e implemente a função `sendToFirestore`:
+O SDK do Firebase (App, Firestore e Authentication) já está integrado em
+`js/firebase-init.js`, incluindo o hook `sendToFirestore` usado pelo
+formulário de contato. Veja a seção **Contador de Visitantes (Firebase)**
+abaixo para os detalhes de configuração no Console (regras, Auth, etc).
 
-```html
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js';
-  import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js';
+## Contador de Visitantes (Firebase)
 
-  const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
-    authDomain: "SEU_PROJETO.firebaseapp.com",
-    projectId: "SEU_PROJETO",
-    // ...
-  };
+O portfólio já vem com rastreamento de visitas via **Firestore**, um card público
+com o total em tempo real (seção "GitHub" → "Visitantes") e um painel
+administrativo em `admin.html`.
 
-  const app = window._firebaseApp = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
+### Como funciona
 
-  window.sendToFirestore = async (data) => {
-    await addDoc(collection(db, 'contacts'), {
-      ...data,
-      createdAt: serverTimestamp(),
-    });
-  };
-</script>
+- `js/firebase-init.js` inicializa o Firebase (App, Firestore e Auth) com as
+  credenciais do projeto `portfolio-david-b1b75`.
+- `js/visitors.js` roda em todas as páginas públicas: registra 1 visita por
+  sessão de navegador (`visits/{autoId}`, com device, navegador, idioma,
+  fuso horário e referrer) e atualiza um contador agregado em
+  `stats/visitors` via transação atômica. O card `#visitorCount` escuta esse
+  documento em tempo real (`onSnapshot`).
+- `admin.html` + `js/admin.js` mostram um dashboard privado: total de
+  visitas, visitas hoje, últimos 7 dias, gráfico dos últimos 14 dias e
+  tabela com as 20 visitas mais recentes. O acesso exige login (Firebase
+  Authentication, e-mail/senha).
+
+### Configuração necessária no Console do Firebase
+
+1. **Ative o Firestore** (modo produção) no projeto `portfolio-david-b1b75`,
+   se ainda não estiver ativo.
+2. **Publique as regras de segurança**: o repositório já inclui
+   `firestore.rules` com as permissões corretas (visitantes só podem criar
+   registros, nunca ler dados de outros visitantes; o card público só lê o
+   contador agregado). Publique com:
+   ```bash
+   firebase deploy --only firestore:rules
+   ```
+3. **Ative Authentication → método E-mail/senha**, em
+   Build → Authentication → Sign-in method.
+4. **Crie seu usuário admin** em Authentication → Users → Add user, com o
+   e-mail e senha que você vai usar para entrar em `/admin.html`.
+
+### Deploy
+
+```bash
+firebase deploy
 ```
+
+Isso publica o hosting e as regras do Firestore juntos. Depois, acesse
+`https://portfolio-david-b1b75.web.app/admin.html` (ou seu domínio
+customizado + `/admin.html`) e faça login com o usuário criado no passo 4.
+
+> **Nota de segurança:** a `apiKey` do Firebase no `firebase-init.js` não é
+> secreta — ela só identifica o projeto publicamente, como em qualquer app
+> Firebase. Quem protege os dados de fato são as Firestore Rules e o
+> Authentication, então não há problema em ela estar visível no código.
 
 ## Personalizações Sugeridas
 

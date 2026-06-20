@@ -300,6 +300,11 @@
                     <div class="stat-number counter" data-target="0" id="followerCount">—</div>
                     <div class="stat-label">Seguidores</div>
                 </div>
+                <div class="stat-card stat-card--live" data-reveal>
+                    <div class="stat-icon"><i class="fa-solid fa-eye"></i></div>
+                    <div class="stat-number counter" id="visitorCount">—</div>
+                    <div class="stat-label">Visitantes <span class="live-dot" title="Atualização em tempo real"></span></div>
+                </div>
             </div>
 
             <div class="lang-section" data-reveal>
@@ -473,6 +478,10 @@
             </div>
         </div>
     </footer>
+
+    <!-- Firebase -->
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/visitors.js"></script>
 
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>

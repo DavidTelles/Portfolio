@@ -4,6 +4,7 @@
         "ignore": [
             "firebase.json",
             ".firebaserc",
+            "firestore.rules",
             "**/.*",
             "**/node_modules/**"
         ],
@@ -33,5 +34,8 @@
                 ]
             }
         ]
+    },
+    "firestore": {
+        "rules": "firestore.rules"
     }
 }
